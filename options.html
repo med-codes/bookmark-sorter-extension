@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Bookmark Sorter AI - Settings & Dashboard</title>
+  <link rel="stylesheet" href="options.css">
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="brand-wrapper">
+        <img src="icon.png" alt="Logo" class="brand-logo" id="brandLogo">
+        <div class="brand-info">
+          <h1>
+            Smart Bookmark Sorter
+            <span class="badge-ai">Gemini AI</span>
+          </h1>
+          <p>Autonomous AI-powered organization for your browser bookmarks</p>
+        </div>
+      </div>
+      <div class="header-status">
+        <div class="status-pill warning" id="connectionStatusPill">
+          <span class="status-dot"></span>
+          <span id="connectionStatusText">API Key Required</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- Top Key Stats -->
+    <section class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">📑</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statTotal">--</div>
+          <div class="stat-label">Total Bookmarks</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">✨</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statSorted">--</div>
+          <div class="stat-label">In "Sorted" Folders</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">📁</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statCategories">--</div>
+          <div class="stat-label">Active Categories</div>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">🤖</div>
+        <div class="stat-info">
+          <div class="stat-value" id="statModel">gemini-3.8-flash</div>
+          <div class="stat-label">AI Engine Model</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Main Grid -->
+    <main class="main-layout">
+      <!-- Left Column: Settings & Configuration -->
+      <div class="config-column">
+        <!-- Gemini API Setup -->
+        <div class="card">
+          <div class="card-title">
+            <span>🔑</span>
+            <span>Google Gemini API Setup</span>
+          </div>
+          <div class="card-desc">
+            Connect your free Google Gemini API key to enable fast intelligent bookmark classification.
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="apiKeyInput">Gemini API Key</label>
+            <div class="input-with-action">
+              <input
+                type="password"
+                id="apiKeyInput"
+                class="text-input"
+                placeholder="AIzaSy..."
+                autocomplete="off"
+                spellcheck="false"
+              />
+              <button type="button" id="toggleKeyVisibility" class="toggle-visibility-btn" title="Toggle visibility">👁️</button>
+            </div>
+            <a href="https://aistudio.google.com/app/apikey" target="_blank" rel="noopener noreferrer" class="helper-link">
+              Get a free API key at Google AI Studio ↗
+            </a>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="modelSelect">AI Model</label>
+            <select id="modelSelect" class="select-input">
+              <option value="gemini-3.8-flash" selected>Gemini 3.8 Flash (High Performance)</option>
+              <option value="gemini-2.0-flash">Gemini 2.0 Flash</option>
+              <option value="gemini-1.5-flash">Gemini 1.5 Flash</option>
+              <option value="gemini-1.5-pro">Gemini 1.5 Pro</option>
+              <option value="custom">Custom Model Name...</option>
+            </select>
+            <input
+              type="text"
+              id="customModelInput"
+              class="text-input"
+              placeholder="e.g. gemini-3.8-flash"
+              style="display: none; margin-top: 8px;"
+            />
+          </div>
+
+          <button type="button" id="testKeyBtn" class="btn btn-primary" style="width: 100%;">
+            <span>⚡ Test & Save Connection</span>
+          </button>
+
+          <div id="apiStatusBanner" class="feedback-banner"></div>
+        </div>
+
+        <!-- Preferred Categories -->
+        <div class="card">
+          <div class="card-title">
+            <span>🏷️</span>
+            <span>Standard Categories</span>
+          </div>
+          <div class="card-desc">
+            The AI prioritizes these categories first, creating new descriptive folders only when a bookmark doesn't fit.
+          </div>
+
+          <div class="add-category-row">
+            <input
+              type="text"
+              id="newCategoryInput"
+              class="text-input"
+              placeholder="e.g. Cooking & Recipes"
+            />
+            <button type="button" id="addCategoryBtn" class="btn btn-secondary">Add</button>
+          </div>
+
+          <div class="categories-container" id="categoriesContainer">
+            <!-- Dynamic Category Chips injected here -->
+          </div>
+
+          <div style="display: flex; justify-content: flex-end;">
+            <button type="button" id="resetCategoriesBtn" class="btn-danger-link">
+              Reset to Default Categories
+            </button>
+          </div>
+        </div>
+
+        <!-- Automation & Preferences -->
+        <div class="card">
+          <div class="card-title">
+            <span>⚙️</span>
+            <span>Preferences & Rules</span>
+          </div>
+
+          <div class="toggle-item">
+            <div>
+              <span class="toggle-label">Real-time Auto-Sort</span>
+              <span class="toggle-sub">Automatically sort new bookmarks with AI as soon as you save them</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="autoSortToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div>
+              <span class="toggle-label">Include Nested Folders</span>
+              <span class="toggle-sub">When running full sort, re-sort bookmarks inside existing subfolders</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="includeNestedToggle">
+              <span class="slider"></span>
+            </label>
+          </div>
+
+          <div class="toggle-item">
+            <div>
+              <span class="toggle-label">Offline Rule Fallback</span>
+              <span class="toggle-sub">Use domain/keyword matching if offline or when quota is exceeded</span>
+            </div>
+            <label class="switch">
+              <input type="checkbox" id="useFallbackToggle" checked>
+              <span class="slider"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Sorting Action & Results Feed -->
+      <div class="action-column">
+        <!-- Hero Action Card -->
+        <div class="card">
+          <div class="hero-action-box">
+            <h3>Organize Your Bookmarks with AI</h3>
+            <p>
+              Gemini will analyze your bookmarks, determine their exact topics, and place them neatly into categorized folders inside <strong>Other bookmarks &gt; Sorted</strong>.
+            </p>
+            <div class="actions-cluster">
+              <button type="button" id="runSortBtn" class="btn btn-primary" style="padding: 12px 24px; font-size: 14px;">
+                <span>✨ Sort All Bookmarks Now</span>
+              </button>
+              <button type="button" id="previewSortBtn" class="btn btn-secondary" style="padding: 12px 20px;">
+                <span>🔍 Dry Run / Preview Only</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Live Progress Container -->
+          <div class="progress-container" id="progressContainer">
+            <div class="progress-header">
+              <span id="progressLabel">Analyzing bookmarks with Gemini AI...</span>
+              <span id="progressPercentage">0%</span>
+            </div>
+            <div class="progress-track">
+              <div class="progress-bar-fill" id="progressBarFill"></div>
+            </div>
+            <div class="progress-status-msg" id="progressSubMsg">Processing batch 1...</div>
+          </div>
+
+          <!-- Activity & Results Feed -->
+          <div class="results-header">
+            <div>
+              <h4 style="font-size: 15px; font-weight: 700;">Categorization Activity</h4>
+              <span id="resultsCount" style="font-size: 12px; color: var(--text-dim);">No recent sort run</span>
+            </div>
+            <div class="search-box">
+              <input
+                type="text"
+                id="resultsSearch"
+                class="text-input"
+                placeholder="Search results..."
+                style="padding: 6px 12px; font-size: 12px;"
+              />
+            </div>
+          </div>
+
+          <div class="results-table-wrapper" id="resultsTableWrapper">
+            <table class="results-table" id="resultsTable" style="display: none;">
+              <thead>
+                <tr>
+                  <th style="width: 45%;">Bookmark</th>
+                  <th style="width: 25%;">Target Category</th>
+                  <th style="width: 20%;">AI Rationale</th>
+                  <th style="width: 10%;">Status</th>
+                </tr>
+              </thead>
+              <tbody id="resultsBody">
+                <!-- Dynamically populated rows -->
+              </tbody>
+            </table>
+
+            <div class="empty-state" id="emptyResultsState">
+              <div class="empty-state-icon">📂</div>
+              <p style="font-weight: 600; color: var(--text-muted);">Ready to Organize</p>
+              <p style="font-size: 12px; margin-top: 4px;">
+                Click <strong>"Sort All Bookmarks Now"</strong> or <strong>"Dry Run"</strong> to see AI categorization in action.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="options.js" type="module"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Bookmark Sorter AI",
+  "version": "2.0",
+  "description": "Intelligently categorizes and sorts your bookmarks using Google Gemini AI.",
+  "permissions": [
+    "bookmarks",
+    "storage"
+  ],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*"
+  ],
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "default-rules.json",
+        "default-categories.json",
+        "icon.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ],
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": true
+  },
+  "action": {
+    "default_title": "AI Bookmark Sorter Dashboard",
+    "default_icon": "icon.png"
+  }
+}

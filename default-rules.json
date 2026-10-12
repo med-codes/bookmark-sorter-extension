@@ -1,0 +1,139 @@
+[
+  {
+    "folder": "Coding",
+    "domains": [
+      "github.com",
+      "gitlab.com",
+      "stackoverflow.com",
+      "developer.mozilla.org",
+      "npmjs.com",
+      "pypi.org",
+      "leetcode.com",
+      "geeksforgeeks.org"
+    ],
+    "keywords": [
+      "tutorial",
+      "documentation",
+      "api reference",
+      "programming"
+    ]
+  },
+  {
+    "folder": "Video",
+    "domains": [
+      "youtube.com",
+      "youtu.be",
+      "netflix.com",
+      "vimeo.com",
+      "twitch.tv"
+    ],
+    "keywords": [
+      "watch"
+    ]
+  },
+  {
+    "folder": "Social",
+    "domains": [
+      "twitter.com",
+      "x.com",
+      "facebook.com",
+      "instagram.com",
+      "linkedin.com",
+      "reddit.com",
+      "discord.com"
+    ],
+    "keywords": []
+  },
+  {
+    "folder": "Shopping",
+    "domains": [
+      "amazon.in",
+      "amazon.com",
+      "flipkart.com",
+      "myntra.com",
+      "ebay.com",
+      "etsy.com"
+    ],
+    "keywords": [
+      "buy",
+      "price",
+      "deal",
+      "cart"
+    ]
+  },
+  {
+    "folder": "News",
+    "domains": [
+      "bbc.com",
+      "nytimes.com",
+      "theguardian.com",
+      "ndtv.com",
+      "thehindu.com",
+      "cnn.com"
+    ],
+    "keywords": [
+      "breaking news",
+      "headlines"
+    ]
+  },
+  {
+    "folder": "Learning",
+    "domains": [
+      "coursera.org",
+      "udemy.com",
+      "khanacademy.org",
+      "edx.org",
+      "wikipedia.org",
+      "medium.com"
+    ],
+    "keywords": [
+      "course",
+      "learn",
+      "lecture"
+    ]
+  },
+  {
+    "folder": "Finance",
+    "domains": [
+      "zerodha.com",
+      "paypal.com",
+      "moneycontrol.com",
+      "investopedia.com"
+    ],
+    "keywords": [
+      "bank",
+      "invest",
+      "stock",
+      "mutual fund"
+    ]
+  },
+  {
+    "folder": "Travel",
+    "domains": [
+      "makemytrip.com",
+      "booking.com",
+      "airbnb.com",
+      "tripadvisor.com",
+      "irctc.co.in"
+    ],
+    "keywords": [
+      "flight",
+      "hotel",
+      "trip"
+    ]
+  },
+  {
+    "folder": "AI Tools",
+    "domains": [
+      "claude.ai",
+      "chatgpt.com",
+      "gemini.google.com",
+      "huggingface.co",
+      "perplexity.ai"
+    ],
+    "keywords": [
+      "ai tool",
+      "llm"
+    ]
+  }
+]
